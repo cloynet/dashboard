@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext'
 
@@ -9,19 +9,26 @@ function DashboardPage() {
     const { user, logout } = useAuth();
     const router = useRouter();
 
+    useEffect(() => {
+        if (user === null) {
+            router.push('/login');
+        }
+    }, [user, router]);
+
+    
+
+
     const handleLogout = () => {
         logout();
-        router.push('/login');
     }
 
     if (!user) {
         return (
             <div className='p-10 text-red-600 text-center'>
-            Lütfen giriş yapın.
+                Yükleniyor veya yönlendiriliyorsunuz...
             </div>
-        )
+        );
     }
-
 
  return (
     <div className='min-h-screen flex'>
