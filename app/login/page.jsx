@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -8,8 +8,22 @@ import { useAuth } from '@/context/AuthContext';
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useAuth();
+  const { user,login } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard')
+    }
+  }, [user, router])
+
+  if (user) {
+    return (
+      <div className='p-10 text-red-600 text-center'>
+                giriş yapılı
+            </div>
+    )
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
