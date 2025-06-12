@@ -1,15 +1,28 @@
 'use client';
-import React, { use } from 'react'
-
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useAuth } from '@/context/AuthContext'
 
 function RegisterPage() {
-
     const router = useRouter();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { user } = useAuth();
+
+    useEffect(() => {
+      if (user) {
+        router.push('/dashboard')
+      }
+    }, [user, router])
+
+    if (user) {
+    return (
+      <div className='p-10 text-red-600 text-center'>
+                giriş yapılı
+            </div>
+    )
+  }
 
     const handleRegister = (e) => {
         e.preventDefault();
