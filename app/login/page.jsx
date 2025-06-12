@@ -11,19 +11,19 @@ function LoginPage() {
   const { user,login } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    if (user) {
-      router.push('/dashboard')
-    }
-  }, [user, router])
-
-  if (user) {
-    return (
-      <div className='p-10 text-red-600 text-center'>
+ useEffect(() => {
+       if (user) {
+         router.push('/dashboard')
+       }
+     }, [user, router])
+ 
+     if (user) {
+     return (
+       <div className='p-10 text-red-600 text-center'>
                 giriş yapılı
-            </div>
-    )
-  }
+        </div>
+     )
+   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
