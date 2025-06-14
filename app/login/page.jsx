@@ -70,14 +70,18 @@ function LoginPage() {
             Giriş Yap
           </button>
 
-          <button 
-          className='cursor-pointer w-32 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors'
-          onClick={() => router.push('/register')}
-          >
-            Üye ol
-          </button>
+          
 
         </form>
+        
+        <div className='mt-5 items-center'>
+          <button 
+          className='cursor-pointer w-64 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors'
+          onClick={() => router.push('/register')}
+          >
+            Kayıt ol
+          </button>
+        </div>
 
       </div>
     </div>
